@@ -1,0 +1,1 @@
+#### it is an autoconfigured starter, you don't have to declare beans in your config class

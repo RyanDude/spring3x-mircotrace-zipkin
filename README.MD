@@ -6,3 +6,5 @@
 For tracing the request with open-feign, you have to add Capability bean in the Config class, otherwise, each service will show 
 different traceId, and trace parent will be null which really confused me.
 And you have to use RestTemplateBuilder to create restTemplateBean to trace the request going through restTemplate
+
+#### OPEN API: http://localhost:port/swagger-ui/index.html

@@ -13,6 +13,8 @@
         <module>core-service-sample</module>
         <module>ui-service</module>
         <module>Domains</module>
+        <module>gateway</module>
+        <module>auth-starter</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

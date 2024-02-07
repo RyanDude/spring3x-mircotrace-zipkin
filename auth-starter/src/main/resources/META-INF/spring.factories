@@ -1,0 +1,2 @@
+# here to register the beans in the config class which can be directly used by the ioc in other projects
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.cloud.sample.Config.BeanConfig

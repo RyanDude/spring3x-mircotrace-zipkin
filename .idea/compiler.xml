@@ -8,17 +8,21 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Domains" />
+        <module name="auth-service" />
         <module name="auth-starter" />
-        <module name="core-service-sample" />
         <module name="reg-center" />
         <module name="ui-service" />
         <module name="gateway" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="core-service-sample" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Domains" options="-parameters" />
+      <module name="auth-service" options="-parameters" />
       <module name="auth-starter" options="-parameters" />
       <module name="core-service-sample" options="-parameters" />
       <module name="gateway" options="-parameters" />

@@ -17,6 +17,7 @@ public class Config {
     {
         return builder.build();
     }
+    // you have to add this bean to trace the request going through restTemplate
     @Bean
     public Capability capability(final MeterRegistry registry) {
         return new MicrometerCapability(registry);

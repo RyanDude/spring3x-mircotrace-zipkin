@@ -1,18 +1,18 @@
 package org.cloud.sample.Controllers;
 
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.cloud.sample.AOP.LogTrace;
-import org.cloud.sample.Entities.Account;
-import org.cloud.sample.RespDto;
 import org.cloud.sample.Services.CompositeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api")
@@ -23,13 +23,18 @@ public class UIController {
     public UIController(CompositeService compositeService){
         this.compositeService = compositeService;
     }
-    @GetMapping("/hi")
+    @GetMapping("/cookie_test")
     @LogTrace
-    public String hi(){
-        return this.compositeService.test();
-    }
-    @GetMapping("/test")
-    public RespDto test(){
-        return RespDto.builder().content(List.of(Account.builder().createTime(LocalDateTime.now()).build())).build();
+    public String cookie_test(){
+        HttpServletRequest request =
+                ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes()))
+                        .getRequest();
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie:cookies){
+            if(cookie.getName().equals("my_token")){
+                System.err.println(cookie.getValue());
+            }
+        }
+        return this.compositeService.login();
     }
 }

@@ -10,11 +10,12 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>reg-center</module>
-        <module>core-service-sample</module>
+        <module>auth-service</module>
         <module>ui-service</module>
         <module>Domains</module>
         <module>gateway</module>
         <module>auth-starter</module>
+        <module>auth-service</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -54,10 +55,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+            <version>3.2.1</version>
         </dependency>
 
 

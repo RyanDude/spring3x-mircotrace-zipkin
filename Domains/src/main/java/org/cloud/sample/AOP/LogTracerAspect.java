@@ -19,9 +19,7 @@ public class LogTracerAspect {
     public Object show_trace_log(ProceedingJoinPoint joinPoint) throws Throwable{
         HttpServletRequest request = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder.getRequestAttributes()))
                 .getRequest();
-//        if(request.getHeader("traceparent") == null){}
         log.info("trace-parent: {}", request.getHeader("traceparent"));
-        log.info(request.getRequestURI());
         return joinPoint.proceed();
     }
 }

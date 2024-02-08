@@ -8,3 +8,16 @@ different traceId, and trace parent will be null which really confused me.
 And you have to use RestTemplateBuilder to create restTemplateBean to trace the request going through restTemplate
 
 #### OPEN API: http://localhost:port/swagger-ui/index.html
+
+```
+the project only exposes the port of gateway which is 8080
+services: [auth-service, ui-service]
+Euteka reg center: [reg-center]
+Gateway: [gateway]
+```
+
+---
+BUG:
+```
+cannot configure ramdom port number for auth-service and ui-service
+```

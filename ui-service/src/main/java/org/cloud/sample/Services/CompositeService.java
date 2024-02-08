@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -20,7 +21,7 @@ public class CompositeService {
     public String login(){
         return this.coreServiceSampleFeignApis.login(Account.builder().email("guotajun@gmail.com").password("123").build());
     }
-    public String test(){
-        return this.restTemplate.getForObject("http://localhost:10001/auth/login", String.class);
+    public List<Account> test(){
+        return this.coreServiceSampleFeignApis.test(0,2);
     }
 }

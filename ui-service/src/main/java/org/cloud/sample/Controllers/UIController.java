@@ -4,6 +4,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.cloud.sample.AOP.LogTrace;
+import org.cloud.sample.Entities.Account;
 import org.cloud.sample.Services.CompositeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -36,5 +38,10 @@ public class UIController {
             }
         }
         return this.compositeService.login();
+    }
+    @GetMapping("/feign_test")
+    @LogTrace
+    public List<Account> feign_test(){
+        return this.compositeService.test();
     }
 }

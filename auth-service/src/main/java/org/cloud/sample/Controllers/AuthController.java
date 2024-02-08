@@ -3,16 +3,14 @@ package org.cloud.sample.Controllers;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import org.cloud.sample.AOP.LogTrace;
+import org.cloud.sample.AOP.PageHelper.Page;
 import org.cloud.sample.Entities.Account;
 import org.cloud.sample.RespDto;
 import org.cloud.sample.Services.AccountService;
 import org.cloud.sample.Services.AuthService;
 import org.cloud.sample.Utils.JwtUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -62,5 +60,9 @@ public class AuthController {
         }catch (Exception e){
             return RespDto.builder().msg("duplicated email").status_code("400").build();
         }
+    }
+    @GetMapping("/test")
+    public List<Account> getAllUsers(@RequestParam("page_number") int page_number, @RequestParam("rows_per_page")int rows_per_page){
+        return this.accountService.getAllAccount(Page.builder().page_number(page_number).rows_per_page(rows_per_page).build());
     }
 }
